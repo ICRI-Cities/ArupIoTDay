@@ -1,19 +1,19 @@
-# Arup IoT Tech Intro
-This repo contains all the instructions and example code required for Arup IoT Tech Intro
+# Edison IoT Tech Intro
+This repo contains all the instructions and example code required for the Edison IoT Tech Intro
 
 ##Repo Contents
 * Examples - Contains all the example code required
 * README.md - This guide
 
 ##Order of the Day
-* 11:30 Introductions
+* 11:30 Welcome & introductions
 * 11:35 Introduction to Intel Edison - presentation
 * 11:45 Practical Session
 	* Getting started with your Edison
-		* Installing tools
 		* Configuring wifi and passwords
-		* Hooking up sensors
+		* Blink example
 		* Intel XDK and flashing code to the Edison
+		* Hooking up sensors
 * Break
 	* Hooking up the Edison to Enable IoT
 		* Adding required sensors to Edison
@@ -43,14 +43,16 @@ Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 7. To configure a password for your Edison, type the command 'configure_edison --password'
 	1. Enter a new password for your Edison and confirm
 
-##Hooking up sensors
+##Blink example
 1. Open your Grove kit. This has a number of basic input and output electronics, which can easily be hooked up to your Edison via the supplied ribbon cables (the black/red/white/yellow wires) and the Grove shield.
 2. The shield is the circuit board with a grid of white connectors hiding under the LCD display. Take it out and carefully but firmly push it onto the black headers on your Edison breakout board. It will only fit one way round, so check you've got everything lined up before forcing it.
-3. Find the light sensor board (name marked on bottom) and a ribbon cable from your Grove kit and connect it with a ribbon cable to the socket marked A0 on the shield. The 'A' stands for analog meaning that the socket can handle analog inputs and outputs - things that can vary over a range such as the light sensor. The sockets marked 'D' are for digital inputs and outputs - things that are either on or off.
+3. Find the LED socket board (name marked on bottom), an LED, and a ribbon cable from your Grove kit. Place the LED into the socket on the board (the longer leg of the LED goes into the hole marked +) and connect it with a ribbon cable to the socket marked D2 on the shield. The sockets marked with D are for digital inputs and outputs - things that are either on or off. Those labelled with A are for analog inputs and outputs - things that can vary over a range. We'll come to the analog inputs shortly.
 
 ##Intel XDK and flashing code to the Edison
-1. Open XDK. You might need to register if it is your first time using it.
-2. On the home screen create a new project by clicking on 'Templates' under the 'Start a new project' heading. Then select the 'Analog Read' template. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where your light sensor is attached. It reads the current sensor value and prints it out.
+1. To have the LED you just wired up do anything, you need to upload code to your Edison. To do this we will use Intel XDK. Open XDK. You might need to register if it is your first time using it.
+2. On the home screen create a new project by clicking on 'Templates' under the 'Start a new project' heading. Then select the 'LED Blink' template and define a save location and name for your new project. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where the LED is attached. It will turn the LED on and off for 1 second each but at the moment the code is set up to control the built-in LED on board the Edison breakout board - not the LED that you just hooked up. To change this look for the following line in the code:  
+`var myOnboardLed = new mraa.Gpio(13);`  
+Replace the 13 with 2 (the number of the D socket that we conneted the LED to).   
 3. To upload this code to the Edison we first need to connect the Edison to XDK. To do this, go to the dropdown menu towards the bottom of the screen where it says 'IoT Device'. Look through the list for your Edison with the correct IP addess and select it. In the popup window enter the password for your Edison (the one you configured above) and click 'connect'. Wait for the confirmation that your Edison is connected.  
 
 	> To find the IP address of your Edison - go back to your putty/terminal window and type  
@@ -58,8 +60,13 @@ Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 **MAC USERS:** 'ifconfig'  
 You will see the IP address for your wifi port (wlan) listed among all the details.  
 
-4. Beside the 'IoT Device' dropdown menu there is also a down arrow button. Press this button to flash the analog_read code to your Edison. You can see the success confirmation in the Intel IoT XDK console at the bottom of the screen. 
-5. To run the code on your Edison, click the button with the green play arrow. In the console you should see a number printed out - this is the current reading from the light sensor. To test it further cover the sensor with your finger and run the code again. You should see a much lower value printed out.
+4. Beside the 'IoT Device' dropdown menu there is also a down arrow button. Press this button to flash the LED blink code to your Edison. You can see the success confirmation in the Intel IoT XDK console at the bottom of the screen. 
+5. To run the code on your Edison, click the button with the green play arrow. The LED you wired up should now start to blink on and off. To stop it, you can press the button with the red stop icon in XDK (beside the play button).
+
+##Hooking up sensors
+1. Find the light sensor board (name marked on bottom) and a ribbon cable from your Grove kit and connect it with a ribbon cable to the socket marked A0 on the shield.  
+2. Go to your XDK and click on 'Projects' at the top right of your screen. Then click 'Start a new project' and 'Templates'. Then select the 'Analog Read' template, select a save location and a name for the new project. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where your light sensor is attached. It reads the current sensor value and prints it out.
+3. Flash the code to your Edison using the downward arrow button and then start it running using the green play button. In the console you should see a number printed out - this is the current reading from the light sensor. To test it further cover the sensor with your finger and run the code again. You should see a much lower value printed out.
 
 ##Hooking up Edison to Enable IoT
 1. Find the temperature and sound sensor boards (names marked on the bottom) and two more cable ribbon cables in the Grove kit.
