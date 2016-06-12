@@ -25,16 +25,13 @@ This repo contains all the instructions and example code required for Arup IoT T
 * 2pm Wrap up and close
 
 ##Getting started with your Edison
+> **Note:** For all instructions, please read through the entire step before following; there might be some important details later on for how to perform that step!
 1. Plug in both USB cables to the Edison and your laptop. Ensure that the small switch on the Edison is positioned towards the 2 micro USB ports.
-2. Check the COM port for your Edison
-
-**WINDOWS USERS:** Go to the Device Manager (usually under Control Panel or you can search for this) and check under 'Ports (COM and LPT)' for 'USB Serial Port (COMxx)', where xx is the name of the Edison COM port.
-
+2. Check the COM port for your Edison. </ br>
+**WINDOWS USERS:** Go to the Device Manager (usually under Control Panel or you can search for this) and check under 'Ports (COM and LPT)' for 'USB Serial Port (COMxx)', where xx is the name of the Edison COM port.</ br>
 **MAC USERS:** Open a terminal and type 'ls /dev/tty.\*' (note the space between ls and /dev/tty.\*). Check for an entry like '/dev/tty.usbserial-xxxxxxxx' and make note of the last part 'usbserial-xxxxxxxx' as this is your serial port name. 
-3. Serial into your Edison on the port from the previous step.
-
-**WINDOWS USERS:** Use putty or equivalent. (If you don't have putty you can quickly download it from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Select the Serial radio button, enter the COM port (COM17) and the baud rate 115200, then click 'Open'. A terminal window should appear.
-
+3. Serial into your Edison on the port from the previous step. </ br>
+**WINDOWS USERS:** Use putty or equivalent. (If you don't have putty you can quickly download it from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Select the Serial radio button, enter the COM port (COM17) and the baud rate 115200, then click 'Open'. A terminal window should appear. </ br>
 **MAC USERS:** In your terminal window type the screen command using the serial port name from previous step 'screen /dev/tty.<yourSerialPortName> <baudRate>' where baudRate is 115200. Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 4. If you have a blank terminal window press 'Enter' once. You should now have a login prompt.
 5. Login: 'Root'
@@ -52,12 +49,9 @@ This repo contains all the instructions and example code required for Arup IoT T
 ##Intel XDK and flashing code to the Edison
 1. Open XDK. You might need to register if it is your first time using it.
 2. On the home screen create a new project by clicking on 'Templates' under the 'Start a new project' heading. Then select the 'Analog Read' template. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where your light sensor is attached. It reads the current sensor value and prints it out.
-3. To upload this code to the Edison we first need to connect the Edison to XDK. To do this, go to the dropdown menu towards the bottom of the screen where it says 'IoT Device'. Look through the list for the Edison with the correct IP addess. To find the IP address of your Edison - go back to your putty/terminal window and type
-
-**WINDOWS USERS:** 'ipconfig'
-
-**MAC USERS:** 'ifconfig'
-
+3. To upload this code to the Edison we first need to connect the Edison to XDK. To do this, go to the dropdown menu towards the bottom of the screen where it says 'IoT Device'. Look through the list for the Edison with the correct IP addess. To find the IP address of your Edison - go back to your putty/terminal window and type </ br>
+**WINDOWS USERS:** 'ipconfig' </ br>
+**MAC USERS:** 'ifconfig' </ br>
 You will see the IP address for your wifi port (wlan) listed.
 4. In the popup window enter the password for your Edison (the one you configured above) and click 'connect'. Wait for the confirmation that your Edison is connected.
 5. Beside the dropdown menu there is also a down arrow. Press this button to flash the analog_read code to your Edison. You can see the success confirmation in the Intel IoT XDK console at the bottom of the screen. 
@@ -66,19 +60,29 @@ You will see the IP address for your wifi port (wlan) listed.
 ##Hooking up Edison to Enable IoT
 1. Find the temperature and sound sensor boards (names marked on the bottom) and two more cable ribbon cables in the Grove kit.
 2. Connect the temperature sensor to A1 and the sound sensor to A3 (note - NOT A2 as there are sometimes issues with this port). Make sure you have the sensors connected exactly as described or you might run into issues later on.
-3. We will now configure the Edison to be ready to connect it to Enable IoT. Go back to your putty/terminal window and type 'iotkit-admin test'. You should see a success message. This tests the connection between your Edison and Enable IoT. The iotkit-admin is part of an iotkit agent that is pre-installed in Edisons. The agent simplifies the process of configuring and connecting Edisons with Enable IoT.
+3. We will now configure the Edison to be ready to connect it to Enable IoT. Go back to your putty/terminal window and type 'iotkit-admin test'. You should see a success message. This tests the connection between your Edison and Enable IoT. The iotkit-admin is part of an iotkit package that is pre-installed in Edisons. The iotkit-admin simplifies the process of configuring and connecting Edisons with Enable IoT.
 4. Next you need to set the ID of your Edison for Enable IoT. A default ID is already assigned and you can see this by typing 'iotkit-admin device-id'. If you want to change the ID of your device (perhaps to something more memorable), type the command 'iotkit-admin set-device-id <your-new-device-id\>'.
 5. Now you are ready to activate your Edison device on Enable IoT, but first you need to get an activation code. To do this, log into your Enable IoT account and navigate to Main menu -> Account -> Details. Click the refresh button beside 'Activation code' and then click the eye button to see what the new activation code is. Then, back in your putty/terminal window type 'iotkit-admin activate <your-activation-code>' using the activation code you just got from Enable IoT.
 6. To check if your Edison device is now activated in Enable IoT, navigate to Main menu -> Devices, and you should see your Edison listed with the correct device ID.
 7. Next, we need to tell Enable IoT what types of sensors we are planning to send data from. Enable IoT already knows about some types of sensor, you can see these by navigating to Main menu -> Accounts -> Catalog. There should be 3 listed by default - Humidity, PowerSwitch and Temperature. We need to add two more types - light and sound. Create new ones for light and sound by clicking 'Add new catalog item' and filling in the details in the popup window. For light - make sure the component name is 'light', for sound - make sure the component name is 'sound'. Otherwise you could have issues later on.
 8. Now we go back to the Edison putty/terminal window to register your Edison's 3 connected sensors with the corresonding catalog items listed in Enable IoT. To see the list of possible catalog items that your Enable IoT account has, type the command 'iotkit-admin catalog'. You should see a table with 5 items - the default 3 plus the 2 extra you created. Pay particular attention to the 'measure' and 'id' fields for each item as you will need these now. To register your light sensor, type the command 'iotkit-admin register <measure> <catalog-id>' using the measure and id fields for the light catalog item. Repeat this step with the other 2 sensors - temperature and sound. The 3 sensors should now be registered with your Edison device on Enable IoT. To check, go to Enable IoT and navigate to Main menu -> Charts. Select your Edison under 'Select device' and you should see the 3 attached sensors listed.
-9. We can test the entire setup now by sending some fake data from the Edison. To do this, go to the putty/terminal window and type the follwing 3 commands: 
-
-'iotkit-admin observation light 250'
-
-'iotkit-admin observation temperature 21'
-
-'iotkit-admin observation sound 345'
-
+9. We can test the entire setup now by sending some fake data from the Edison. To do this, go to the putty/terminal window and type the follwing 3 commands: </ br>
+'iotkit-admin observation light 250' </ br>
+'iotkit-admin observation temperature 21' </ br>
+'iotkit-admin observation sound 345' </ br>
 Go back to Enable IoT and navigate to Main menu -> Charts. Select your Edison device and select all 3 sensors. Below that, click on List view and you should see your 3 fake data points listed.
 
+##Pushing data to Enable IoT
+The iotkit-agent comes with the Edison by default and makes it really easy to push data to Enable IoT. If you were to do this manually you would need to handle all the Enable IoT authentication which can be complicated. Instead, the iotkit-agent handles all this for us. It does this within a process in the Edison that listens on port 41234 for new Enable IoT data. When new data is received through this port the process checks it is the right format, handles the authentication and pushes it up to Enable IoT - Done!
+1. To start the iotkit-agent we need to run a standard linux system command for starting and stopping such processes: </ br>
+'systemctl start iotkit-agent' </ br>
+To check it is running sucessfully type: </ br>
+'systemctl status iotkit-agent' </ br>
+To stop the process type: </ br>
+'systemctl stop iotkit-agent'
+2. Go back to XDK and create a new project from a blank template. (Click on Project at the top left of the screen and then 'Start a new project' at the bottom left, then 'Templates' at the top left, and select the blank template option)
+3. Copy and paste the code from the push_data.js example (in the Examples directory of this repo) into the blank template in XDK. This code captures readings from all 3 sensors every 1 second and sends the data to port 41234 where the iotkit-agent takes over and pushes the data to Enable IoT. Flash the code to your Edison using the downward arrow button and then start it running using the green play button. Sensor data should now be streaming up to your Enable IoT account every 1 second.
+4. Go to you Enable IoT account to check if the data is coming through. Navigate to Main menu -> Charts, and select you device and sensors. Below that click on the graph view and you will see a line graph showing the sensor inputs.
+
+##Resources
+1. Enable IoT Github repo: []()
