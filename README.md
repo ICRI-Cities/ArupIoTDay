@@ -53,7 +53,7 @@ Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 2. On the home screen create a new project by clicking on 'Templates' under the 'Start a new project' heading. Then select the 'Analog Read' template. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where your light sensor is attached. It reads the current sensor value and prints it out.
 3. To upload this code to the Edison we first need to connect the Edison to XDK. To do this, go to the dropdown menu towards the bottom of the screen where it says 'IoT Device'. Look through the list for your Edison with the correct IP addess and select it. In the popup window enter the password for your Edison (the one you configured above) and click 'connect'. Wait for the confirmation that your Edison is connected.  
 
-> To find the IP address of your Edison - go back to your putty/terminal window and type  
+	> To find the IP address of your Edison - go back to your putty/terminal window and type  
 **WINDOWS USERS:** 'ipconfig'  
 **MAC USERS:** 'ifconfig'  
 You will see the IP address for your wifi port (wlan) listed among all the details.  
