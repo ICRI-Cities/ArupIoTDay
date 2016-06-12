@@ -56,7 +56,8 @@ Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 > To find the IP address of your Edison - go back to your putty/terminal window and type  
 **WINDOWS USERS:** 'ipconfig'  
 **MAC USERS:** 'ifconfig'  
-You will see the IP address for your wifi port (wlan) listed among all the details.
+You will see the IP address for your wifi port (wlan) listed among all the details.  
+
 4. Beside the 'IoT Device' dropdown menu there is also a down arrow button. Press this button to flash the analog_read code to your Edison. You can see the success confirmation in the Intel IoT XDK console at the bottom of the screen. 
 5. To run the code on your Edison, click the button with the green play arrow. In the console you should see a number printed out - this is the current reading from the light sensor. To test it further cover the sensor with your finger and run the code again. You should see a much lower value printed out.
 
