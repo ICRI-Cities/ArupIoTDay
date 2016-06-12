@@ -83,7 +83,7 @@ To check it is running sucessfully type:
 To stop the process type:  
 'systemctl stop iotkit-agent'  
 2. Go back to XDK and create a new project from a blank template. (Click on Project at the top left of the screen and then 'Start a new project' at the bottom left, then 'Templates' at the top left, and select the blank template option)  
-3. Copy and paste the code from the push_data.js example (in the Examples directory of this repo) into the blank template in XDK. This code captures readings from all 3 sensors every 1 second and sends the data to port 41234 where the iotkit-agent takes over and pushes the data to Enable IoT. Flash the code to your Edison using the downward arrow button and then start it running using the green play button. Sensor data should now be streaming up to your Enable IoT account every 1 second.
+3. Copy and paste the code from the push_data.js example (in the Examples directory of this repo) into the blank template in XDK. This code captures readings from all 3 sensors every 1 second and sends the data to port 41234 where the iotkit-agent takes over and pushes the data to Enable IoT. Flash the code to your Edison using the downward arrow button and then start it running using the green play button. Sensor data should now be streaming up to your Enable IoT account every 1 second.  
 4. Go to you Enable IoT account to check if the data is coming through. Navigate to Main menu -> Charts, and select you device and sensors. Below that click on the graph view and you will see a line graph showing the sensor inputs.
 
 ##Resources
