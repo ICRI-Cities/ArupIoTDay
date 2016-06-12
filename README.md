@@ -26,9 +26,10 @@ This repo contains all the instructions and example code required for Arup IoT T
 
 ##Getting started with your Edison
 > **Note:** For all instructions, please read through the entire step before following; there might be some important details later on for how to perform that step!
+
 1. Plug in both USB cables to the Edison and your laptop. Ensure that the small switch on the Edison is positioned towards the 2 micro USB ports.
-2. Check the COM port for your Edison. </ br>
-**WINDOWS USERS:** Go to the Device Manager (usually under Control Panel or you can search for this) and check under 'Ports (COM and LPT)' for 'USB Serial Port (COMxx)', where xx is the name of the Edison COM port.</ br>
+2. Check the COM port for your Edison.  
+**WINDOWS USERS:** Go to the Device Manager (usually under Control Panel or you can search for this) and check under 'Ports (COM and LPT)' for 'USB Serial Port (COMxx)', where xx is the name of the Edison COM port.  
 **MAC USERS:** Open a terminal and type 'ls /dev/tty.\*' (note the space between ls and /dev/tty.\*). Check for an entry like '/dev/tty.usbserial-xxxxxxxx' and make note of the last part 'usbserial-xxxxxxxx' as this is your serial port name. 
 3. Serial into your Edison on the port from the previous step. </ br>
 **WINDOWS USERS:** Use putty or equivalent. (If you don't have putty you can quickly download it from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Select the Serial radio button, enter the COM port (COM17) and the baud rate 115200, then click 'Open'. A terminal window should appear. </ br>
