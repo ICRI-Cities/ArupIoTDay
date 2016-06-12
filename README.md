@@ -33,7 +33,7 @@ This repo contains all the instructions and example code required for Arup IoT T
 **MAC USERS:** Open a terminal and type 'ls /dev/tty.\*' (note the space between ls and /dev/tty.\*). Check for an entry like '/dev/tty.usbserial-xxxxxxxx' and make note of the last part 'usbserial-xxxxxxxx' as this is your serial port name.
 3. Serial into your Edison on the port from the previous step.  
 **WINDOWS USERS:** Use putty or equivalent. (If you don't have putty you can quickly download it from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Select the Serial radio button, enter the COM port (COM17) and the baud rate 115200, then click 'Open'. A terminal window should appear.  
-**MAC USERS:** In your terminal window type the screen command using the serial port name from previous step 'screen /dev/tty.\<yourSerialPortName\> \<baudRate\>' where baudRate is 115200. Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
+**MAC USERS:** In your terminal window type the screen command using the serial port name from previous step 'screen /dev/tty.\<yourSerialPortName\> \<baudRate\>' where \<baudRate\> is 115200. Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 4. If you have a blank terminal window press 'Enter' once. You should now have a login prompt.
 5. Login: 'Root'
 6. To configure wifi type 'configure_edison --wifi'
