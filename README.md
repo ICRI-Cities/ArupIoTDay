@@ -51,10 +51,8 @@ Example: 'screen /dev/tty.usbserial-AJ035E52 115200'
 ##Intel XDK and flashing code to the Edison
 1. To have the LED you just wired up do anything, you need to upload code to your Edison. To do this we will use Intel XDK. Open XDK. You might need to register if it is your first time using it.
 2. On the home screen create a new project by clicking on 'Templates' under the 'Start a new project' heading. Then select the 'LED Blink' template and define a save location and name for your new project. The example code will open in the main window. The code uses the 'mraa' library to access the input and output pins where the LED is attached. It will turn the LED on and off for 1 second each but at the moment the code is set up to control the built-in LED on board the Edison breakout board - not the LED that you just hooked up. To change this look for the following line in the code: 
-   
 `var myOnboardLed = new mraa.Gpio(13);`  
-  
-Replace the 13 with 2 (the number of the D socket that we conneted the LED to).  
+Replace the 13 with 2 (the number of the D socket that we conneted the LED to).
 3. To upload this code to the Edison we first need to connect the Edison to XDK. To do this, go to the dropdown menu towards the bottom of the screen where it says 'IoT Device'. Look through the list for your Edison with the correct IP addess and select it. In the popup window enter the password for your Edison (the one you configured above) and click 'connect'. Wait for the confirmation that your Edison is connected.  
 
 	> To find the IP address of your Edison - go back to your putty/terminal window and type  
